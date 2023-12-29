@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
 :root {
   --color-indigo-50:#eef2ff;
   --color-indigo-700:#4338ca;
+  --color-violet-50:#f5f3ff;
   --color-violet-200:#ede9fe;
   --color-violet-300:#c4b5fd;
   --color-neutral-600:#525252;
