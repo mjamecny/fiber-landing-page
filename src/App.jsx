@@ -1,19 +1,18 @@
-import styled from "styled-components"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import Footer from "./Footer"
-import Cta from "./Cta"
-import Features from "./Features"
-import Hero from "./Hero"
-
-const StyledApp = styled.div``
+import Homepage from "./pages/Homepage"
+import AppLayout from "./AppLayout"
+import Signup from "./pages/Signup"
 
 export default function App() {
   return (
-    <StyledApp>
-      <Hero />
-      <Features />
-      <Cta />
-      <Footer />
-    </StyledApp>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
