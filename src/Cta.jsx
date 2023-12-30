@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const StyledCta = styled.section`
@@ -39,13 +40,14 @@ const ContentContainer = styled.div`
   gap: 1.2rem;
 `
 
-const Button = styled.button`
+const Button = styled(Link)`
   font-weight: 700;
   color: var(--color-indigo-700);
   background-color: var(--color-violet-50);
   border: none;
   border-radius: 5px;
   padding: 1.6rem 3.2rem;
+  text-align: center;
 
   @media (min-width: 768px) {
     align-self: start;
@@ -66,7 +68,7 @@ export default function Cta() {
             Create an even more impressive portfolio by creating case studies
             for your projects. Simply follow our step-by-step guide.
           </Content>
-          <Button>Start free trial</Button>
+          <Button to="/signup">Start free trial</Button>
         </ContentContainer>
         <Image src="page_img.png" alt="" />
       </Container>

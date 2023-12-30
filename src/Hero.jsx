@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const StyledHero = styled.section`
   background-color: var(--color-violet-200);
   padding-bottom: 6.4rem;
+
+  @media (min-width: 768px) {
+    padding-top: 6.4rem;
+  }
 `
 
 const Container = styled.div`
@@ -78,13 +83,14 @@ const ButtonContainer = styled.div`
   }
 `
 
-const Button = styled.button`
+const Button = styled(Link)`
   font-weight: 700;
   border: none;
   border-radius: 5px;
   padding: 1.6rem 3.2rem;
   background-color: var(--color-indigo-700);
   color: var(--color-violet-50);
+  text-align: center;
 `
 
 const ButtonLink = styled.a`
@@ -136,7 +142,7 @@ export default function Hero() {
             with dozens of premade, beautiful templates.
           </Description>
           <ButtonContainer>
-            <Button>Start free trial</Button>
+            <Button to="/signup">Start free trial</Button>
             <ButtonLink href="#">View Examples</ButtonLink>
           </ButtonContainer>
           <RegisterList>
