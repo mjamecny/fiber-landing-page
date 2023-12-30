@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
   --color-violet-300:#c4b5fd;
   --color-neutral-600:#525252;
   --color-neutral-950:#0a0a0a;
+  --color-slate-300:#cbd5e1;
 }
 
 *,
