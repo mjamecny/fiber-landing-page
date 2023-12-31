@@ -1,3 +1,5 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const StyledSignup = styled.section`
@@ -19,8 +21,6 @@ const Form = styled.form`
   padding-inline: 2.4rem;
 
   @media (min-width: 768px) {
-    /* padding-inline: 12.8rem; */
-    /* padding-block: 6.4rem; */
     justify-self: center;
     align-self: center;
   }
@@ -64,16 +64,34 @@ const Input = styled.input`
   border: 1px solid var(--color-slate-300);
   border-radius: 4px;
   padding: 0.8rem;
+  width: 100%;
 
   &::placeholder {
     color: var(--color-slate-300);
   }
+
+  &:focus {
+    outline: 1px solid var(--color-indigo-700);
+  }
 `
 
-const Link = styled.a`
+const InputContainer = styled.div`
+  position: relative;
+`
+
+const EyeIcon = styled.img`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+`
+
+const StyledLink = styled(Link)`
   font-weight: 700;
   text-decoration: underline;
   color: var(--color-indigo-700);
+  text-align: center;
 
   ${({ type }) => type === "thin" && `font-weight: 400 text-decoration: none;`}
 `
@@ -132,6 +150,8 @@ const IllustrationContent = styled.div`
 `
 
 export default function Signup() {
+  const [showPassword, setShowPassword] = useState(false)
+
   return (
     <StyledSignup>
       <Form>
@@ -147,22 +167,34 @@ export default function Signup() {
         </FormRow>
         <FormRow>
           <Label htmlFor="">Password</Label>
-          <Input type="password" placeholder="At least 8 characters" />
+          <InputContainer>
+            <Input
+              type={showPassword ? "text" : "password"}
+              placeholder="At least 8 characters"
+              minLength="8"
+            />
+            <EyeIcon
+              onClick={() => setShowPassword((prev) => !prev)}
+              src="hide-password.svg"
+              alt="eye icon"
+            />
+          </InputContainer>
         </FormRow>
         <FormRow type="horizontal">
           <input type="checkbox" />
           <Label type="thin" htmlFor="">
             By creating an account on Fiber, you agree to the{" "}
-            <Link href="#">Terms & Conditions</Link>
+            <StyledLink href="#">Terms & Conditions</StyledLink>
           </Label>
         </FormRow>
         <Button>Create Fiber Account</Button>
         <Text>
           Already have an account?{" "}
-          <Link type="thin" href="#">
+          <StyledLink type="thin" href="#">
             Sign in
-          </Link>
+          </StyledLink>
         </Text>
+        <StyledLink to="/">Back to Home</StyledLink>
       </Form>
       <IllustrationDiv>
         <IllustrationContainer>
